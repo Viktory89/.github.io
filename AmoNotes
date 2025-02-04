@@ -1,0 +1,54 @@
+(function() {
+    var widget = {
+        init: function() {
+            console.log("Заметки виджет загружен");
+            this.render();
+        },
+        render: function() {
+            var $widgetContainer = $('<div>', {
+                class: 'notes-widget-container',
+                css: {
+                    position: 'absolute',
+                    top: '10px',
+                    right: '10px',
+                    width: '250px',
+                    height: '200px',
+                    background: 'white',
+                    border: '1px solid #ccc',
+                    padding: '10px',
+                    zIndex: 1000
+                }
+            }).appendTo('body');
+
+            var $textarea = $('<textarea>', {
+                class: 'notes-textarea',
+                css: {
+                    width: '100%',
+                    height: '80%',
+                    resize: 'none'
+                }
+            }).appendTo($widgetContainer);
+
+            var $saveButton = $('<button>', {
+                text: 'Сохранить',
+                class: 'notes-save-btn',
+                css: {
+                    width: '100%',
+                    marginTop: '5px'
+                }
+            }).appendTo($widgetContainer);
+
+            // Загружаем сохраненные заметки
+            var savedNotes = localStorage.getItem('amo_notes') || '';
+            $textarea.val(savedNotes);
+
+            // Обработчик кнопки сохранения
+            $saveButton.on('click', function() {
+                localStorage.setItem('amo_notes', $textarea.val());
+                alert('Заметка сохранена!');
+            });
+        }
+    };
+
+    widget.init();
+})();
