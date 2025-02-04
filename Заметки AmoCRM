@@ -1,0 +1,18 @@
+// manifest.json
+{
+  "widgets": [
+    {
+      "id": "notes_widget",
+      "version": "1.0.0",
+      "author": "Viktory89",
+      "name": "Заметки AmoCRM",
+      "description": "Простой виджет для заметок в AmoCRM",
+      "base_url": "https://your-server.com/",
+      "locations": {
+        "lcard": {
+          "url": "widget.js"
+        }
+      }
+    }
+  ]
+}
